@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tesfalidet Teferi | 2nd Year · Full-stack Portfolio</title>
+  <!-- Google Fonts + modern font stack -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* modern scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== GLASS HEADER ========== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(59,130,246,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 1rem;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #3b82f6;
+      transition: 0.25s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* sections */
+    section {
+      padding: 80px 0 70px;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 4px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-badge {
+      background: #e0f2fe;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0369a1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #334155;
+      max-width: 550px;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1.8rem 0;
+    }
+    .stat {
+      background: white;
+      padding: 8px 20px;
+      border-radius: 48px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e2e8f0;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+    .hero-image {
+      flex: 0.9;
+      background: linear-gradient(145deg, #d9eaff, #ffffff);
+      border-radius: 42% 58% 70% 30% / 44% 40% 60% 56%;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    .avatar-icon {
+      font-size: 8rem;
+      color: #2563eb;
+      filter: drop-shadow(0 8px 14px rgba(37,99,235,0.2));
+    }
+
+    /* skills modern */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .skill-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem 1.8rem;
+      flex: 1 1 180px;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #eef2ff;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.02);
+    }
+    .skill-card i {
+      font-size: 2.6rem;
+      color: #3b82f6;
+      margin-bottom: 1rem;
+    }
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: #b9d0f8;
+      box-shadow: 0 20px 25px -12px rgba(59,130,246,0.2);
+    }
+
+    /* projects cards - realistic + interactive */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05);
+      border: 1px solid #eef2ff;
+    }
+    .project-img {
+      background: linear-gradient(120deg, #eef2ff, #ffffff);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #2563eb;
+    }
+    .project-info {
+      padding: 1.6rem;
+    }
+    .project-info h3 {
+      font-weight: 800;
+      font-size: 1.45rem;
+    }
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0;
+    }
+    .tag {
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e40af;
+    }
+    .demo-btn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      color: #2563eb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+      transition: 0.2s;
+    }
+    .demo-btn:hover {
+      gap: 12px;
+      color: #1d4ed8;
+    }
+
+    /* about + contact modern */
+    .about-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      background: white;
+      border-radius: 48px;
+      padding: 2.2rem 2.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03);
+      border: 1px solid #eef2ff;
+    }
+    .info-list {
+      list-style: none;
+      margin-top: 1.2rem;
+    }
+    .info-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    .social-btn {
+      background: #f1f5f9;
+      padding: 10px 20px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #0f172a;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .social-btn:hover {
+      background: #e0e7ff;
+      transform: scale(0.98);
+    }
+
+    /* newsletter / real-time interactive */
+    .news-card {
+      background: linear-gradient(145deg, #eef2ff, #ffffff);
+      border-radius: 32px;
+      padding: 1.8rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .news-input {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .news-input input {
+      padding: 12px 20px;
+      border-radius: 60px;
+      border: 1px solid #cbd5e1;
+      width: 260px;
+      outline: none;
+    }
+    .news-input button {
+      background: #2563eb;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    @media (max-width: 780px) {
+      .hero-content h1 { font-size: 2.3rem; }
+      .section-title { font-size: 1.9rem; }
+      .about-wrap { padding: 1.5rem; }
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      z-index: 999;
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="toast-msg" id="liveToast">✨ Action completed</div>
+
+<header>
+  <div class="container">
+    <div class="nav-bar">
+      <div class="logo">Tesfalidet.dev</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Connect</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fas fa-graduation-cap"></i> Second-year · CS student</div>
+          <h1>Building digital experiences<br> as <span class="gradient-text">Tesfalidet Teferi</span></h1>
+          <p>Passionate frontend developer & React enthusiast. I craft responsive, human-centric interfaces with modern JavaScript and design systems.</p>
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-number" id="projectCounter">12+</span><br>Projects</div>
+            <div class="stat"><span class="stat-number">7+</span><br>Technologies</div>
+            <div class="stat"><span class="stat-number">2</span><br>Years active</div>
+          </div>
+          <button class="social-btn" id="resumeDynamicBtn" style="background:#2563eb; color:white; border:none;"><i class="fas fa-file-alt"></i> Resume preview</button>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-code avatar-icon"></i>
+          <p style="font-weight: 600; margin-top: 12px;">Tesfalidet Teferi</p>
+          <span style="background:#eef2ff; padding:4px 12px; border-radius:40px; font-size:0.75rem;">React · JS · Tailwind</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section (realistic icons) -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Tech arsenal</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fab fa-react"></i><h3>React 18</h3><p>Hooks, context, custom hooks</p></div>
+        <div class="skill-card"><i class="fab fa-js"></i><h3>JavaScript ES6+</h3><p>Async, closures, DOM</p></div>
+        <div class="skill-card"><i class="fab fa-css3-alt"></i><h3>Tailwind / CSS3</h3><p>Responsive, animations</p></div>
+        <div class="skill-card"><i class="fab fa-node-js"></i><h3>Node.js</h3><p>Express, REST basics</p></div>
+        <div class="skill-card"><i class="fas fa-database"></i><h3>Firebase</h3><p>Auth, Firestore</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (dynamic via JS) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured projects</h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- About + Real-time Contact -->
+  <section id="about">
+    <div class="container">
+      <div class="about-wrap">
+        <div style="flex:1.5">
+          <h2 class="section-title" style="margin-bottom: 1.2rem;">About me</h2>
+          <p>I'm Tesfalidet Teferi, a second-year CS student driven by code and creativity. I've built multiple full-stack apps and love solving real-world problems with React & modern tools. Currently exploring Next.js and backend integration.</p>
+          <ul class="info-list">
+            <li><i class="fas fa-map-pin"></i> Addis Ababa / Global remote</li>
+            <li><i class="fas fa-laptop-code"></i> 2nd year · GPA: 3.8/4.0</li>
+            <li><i class="fas fa-medal"></i> Winner: University hackathon 2025</li>
+          </ul>
+        </div>
+        <div id="contact" style="flex:1">
+          <h2 class="section-title" style="margin-bottom: 1rem;">Get in touch</h2>
+          <p>Let’s collaborate or just say hi — I reply within 24h!</p>
+          <div class="contact-links">
+            <a href="#" id="emailMockBtn" class="social-btn"><i class="fas fa-envelope"></i> Email</a>
+            <a href="#" id="linkedinMock" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="#" id="githubMockBtn" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+          <!-- Interactive widget -->
+          <div class="news-card">
+            <i class="fas fa-paper-plane" style="color:#2563eb; font-size:1.5rem;"></i>
+            <h3 style="margin: 8px 0;">Coffee & code chat?</h3>
+            <div class="news-input">
+              <input type="text" id="visitorName" placeholder="Your name">
+              <button id="greetBtn"><i class="fas fa-comment"></i> Greet me</button>
+            </div>
+            <p id="greetFeedback" style="margin-top:12px; font-size:0.8rem;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Tesfalidet Teferi — 2nd year student portfolio · React-ready codebase</p>
+    <p style="margin-top: 6px;"><i class="fas fa-heart" style="color:#3b82f6;"></i> Built with modern JS, interactive components</p>
+  </div>
+</footer>
+
+<script>
+  // ---------- PROJECTS (realistic data with JS interactivity) ----------
+  const projectsData = [
+    { title: "CineMatch React App", desc: "Movie discovery platform using TMDB API, custom hooks, and responsive grid.", tags: ["React", "Axios", "CSS Modules"], icon: "fab fa-react", demoLink: "#" },
+    { title: "FinDash Analytics", desc: "Interactive dashboard with charts, expense tracker & localStorage sync.", tags: ["Chart.js", "JS", "LocalStorage"], icon: "fas fa-chart-line", demoLink: "#" },
+    { title: "Ecoleta Web", desc: "Sustainability map — find recycling points, Leaflet integration & geolocation.", tags: ["Leaflet", "HTML/CSS", "API"], icon: "fas fa-leaf", demoLink: "#" },
+    { title: "Portfolio 2.0 (this)", desc: "Fully dynamic portfolio with component-like structure and modern UI.", tags: ["HTML/CSS", "JS", "Responsive"], icon: "fas fa-laptop-code", demoLink: "#" },
+    { title: "TaskFlow Pro", desc: "Kanban board with drag & drop, task categories and dark mode.", tags: ["React", "Tailwind", "dnd-kit"], icon: "fas fa-tasks", demoLink: "#" }
+  ];
+
+  function renderProjects() {
+    const grid = document.getElementById('projectsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    projectsData.forEach((proj, idx) => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <div class="project-img">
+          <i class="${proj.icon}" style="font-size: 3.2rem;"></i>
+        </div>
+        <div class="project-info">
+          <h3>${proj.title}</h3>
+          <p>${proj.desc}</p>
+          <div class="project-tags">
+            ${proj.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+          <button class="demo-btn" data-project-idx="${idx}">Live demo →</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // attach event listeners to demo buttons
+    document.querySelectorAll('.demo-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = btn.getAttribute('data-project-idx');
+        const projectTitle = projectsData[idx]?.title || 'project';
+        showToast(`✨ ${projectTitle}: interactive preview ready. Contact for source code.`);
+      });
+    });
+  }
+
+  // toast notification system
+  function showToast(message) {
+    const toast = document.getElementById('liveToast');
+    if (toast) {
+      toast.textContent = message;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+      }, 2500);
+    }
+  }
+
+  // Resume button handler
+  function setupResume() {
+    const resumeBtn = document.getElementById('resumeDynamicBtn');
+    if (resumeBtn) {
+      resumeBtn.addEventListener('click', () => {
+        showToast("📄 Tesfalidet Teferi · 2nd year CS · Skills: React, JS, Node, UI/UX · Open for internships");
+      });
+    }
+  }
+
+  // Social buttons mock (real-like)
+  function setupSocials() {
+    const emailBtn = document.getElementById('emailMockBtn');
+    const linkedin = document.getElementById('linkedinMock');
+    const github = document.getElementById('githubMockBtn');
+    if (emailBtn) emailBtn.addEventListener('click', (e) => { e.preventDefault(); showToast("📧 tesfalidet.teferi@edu.com · Let's connect!"); });
+    if (linkedin) linkedin.addEventListener('click', (e) => { e.preventDefault(); showToast("🔗 LinkedIn: Tesfalidet Teferi · CS student & frontend dev"); });
+    if (github) github.addEventListener('click', (e) => { e.preventDefault(); showToast("🐙 github.com/tesfalidet-dev · repos: react dashboards, weather, portfolio"); });
+  }
+
+  // Dynamic greeting widget (real-time interaction)
+  function setupGreetingWidget() {
+    const greetButton = document.getElementById('greetBtn');
+    const nameInput = document.getElementById('visitorName');
+    const feedback = document.getElementById('greetFeedback');
+    if (greetButton && nameInput) {
+      greetButton.addEventListener('click', () => {
+        const name = nameInput.value.trim();
+        if (name === "") {
+          feedback.innerHTML = "👋 Hey there! Type your name for a personal welcome.";
+          showToast("Please enter your name ✨");
+        } else {
+          feedback.innerHTML = `🎉 Hi ${name}, I'm Tesfalidet — 2nd year student & dev. Thanks for visiting! 🚀`;
+          showToast(`Thanks ${name}, let's create something awesome!`);
+          nameInput.value = '';
+        }
+      });
+    }
+  }
+
+  // dynamic counter animation for projects
+  function animateCounter() {
+    const counterSpan = document.getElementById('projectCounter');
+    if (!counterSpan) return;
+    let current = 0;
+    const target = 14;
+    const updateCounter = () => {
+      if (current < target) {
+        current++;
+        counterSpan.innerText = current + '+';
+        setTimeout(updateCounter, 35);
+      } else {
+        counterSpan.innerText = '14+';
+      }
+    };
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        updateCounter();
+        observer.disconnect();
+      }
+    });
+    observer.observe(counterSpan);
+  }
+
+  // smooth scroll navigation
+  function setupSmoothScroll() {
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
+  // additional interactivity: simulate react-like state for visitor greeting
+  function addRealTimeClock() {
+    const footer = document.querySelector('footer p');
+    if (footer) {
+      const timeSpan = document.createElement('span');
+      timeSpan.style.display = 'block';
+      timeSpan.style.marginTop = '6px';
+      timeSpan.style.fontSize = '0.7rem';
+      timeSpan.innerHTML = `<i class="far fa-clock"></i> live: ${new Date().toLocaleTimeString()}`;
+      footer.appendChild(timeSpan);
+      setInterval(() => {
+        timeSpan.innerHTML = `<i class="far fa-clock"></i> live: ${new Date().toLocaleTimeString()}`;
+      }, 1000);
+    }
+  }
+
+  // project hover effects + like simulation
+  function enhanceCards() {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-6px)';
+        card.style.boxShadow = '0 24px 36px -12px rgba(0,0,0,0.15)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0px)';
+        card.style.boxShadow = '0 12px 28px -8px rgba(0,0,0,0.05)';
+      });
+    });
+  }
+
+  // attach all components and DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
+    setupResume();
+    setupSocials();
+    setupGreetingWidget();
+    setupSmoothScroll();
+    animateCounter();
+    addRealTimeClock();
+    enhanceCards();
+
+    // extra effect: simulate react-like dynamic tagline on hero
+    const heroText = document.querySelector('.hero-content p');
+    if (heroText) {
+      const messages = ["React developer in the making", "2nd year · building cool stuff", "Open for collab & internship"];
+      let idx = 0;
+      setInterval(() => {
+        idx = (idx + 1) % messages.length;
+        const sub = document.createElement('span');
+        sub.style.display = 'block';
+        sub.style.fontSize = '0.85rem';
+        sub.style.marginTop = '6px';
+        sub.style.fontWeight = '500';
+        sub.style.color = '#2563eb';
+        const oldSpan = heroText.querySelector('.dynamic-sub');
+        if (oldSpan) oldSpan.remove();
+        const newSpan = document.createElement('span');
+        newSpan.className = 'dynamic-sub';
+        newSpan.innerHTML = `<i class="fas fa-sync-alt"></i> ${messages[idx]}`;
+        heroText.appendChild(newSpan);
+      }, 4200);
+    }
+  });
+</script>
+</body>
+</html>
